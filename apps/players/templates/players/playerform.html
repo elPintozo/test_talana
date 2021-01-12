@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% url 'players:add-player' as add_player %}
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+            <h4 class="text-center">Create a new Player</h4>
+            <form method="post" id="form" name="form" class="form-inline" action="{{add_player}}">
+                {% csrf_token %}
+                {{form.errors}}
+                {{form.as_p}}
+                <button type="reset" class="btn btn-block btn-warning">Reset</button>
+                <button type="submit" class="btn btn-block btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+{% endblock%}
